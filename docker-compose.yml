@@ -1,0 +1,13 @@
+services:
+  #Serviço da sua aplicação FastAPI
+  api:
+    build: . #Constroi a imagem a partir do Dockerfile na raiz do projeto
+    container_name: api #Nome do container
+    ports:
+      - "8000:8000"
+    volumes:
+      # Monta o diretório atual para o diretório /app no contêiner
+      # Isso permite o live-reload do código
+      - .:/app
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+
